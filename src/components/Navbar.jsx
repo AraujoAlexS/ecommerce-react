@@ -2,6 +2,7 @@ import { Badge } from "@material-ui/core";
 import { Search, ShoppingCartOutlined } from "@material-ui/icons";
 import React from "react";
 import styled from "styled-components";
+import colors from "../colors";
 
 const Container = styled.div`
   height: 60px;
@@ -28,7 +29,7 @@ const Section = styled.div`
 `;
 
 const Language = styled.span`
-  color: #777;
+  color: ${colors.gray};
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
@@ -47,7 +48,7 @@ const SearchContainer = styled.div`
   transition: all 0.3s ease-in-out;
 
   &:hover {
-    border: 1px solid gray;
+    border: 1px solid ${colors.gray};
   }
 `;
 
@@ -60,12 +61,13 @@ const Input = styled.input`
 `;
 
 const Logo = styled.h1`
+  color: ${colors.darkGray};
   font-weight: 600;
   text-transform: uppercase;
 `;
 
 const MenuItem = styled.div`
-  color: #777;
+  color: ${colors.gray};
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;

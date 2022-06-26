@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
+import colors from "../colors";
 
 const Container = styled.div`
   height: 30px;
-  background: #367beb;
+  background: ${colors.primary};
   color: white;
   display: grid;
   place-items: center;
