@@ -42,21 +42,51 @@ const Slide = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
+
+  @media only screen and (max-width: 900px) {
+    position: relative;
+  }
 `;
 const ImgContainer = styled.div`
   flex: 0.6;
   height: 100%;
+
+  @media only screen and (max-width: 900px) {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
 `;
 
 const Image = styled.img`
   height: 100%;
   object-fit: cover;
+
+  @media only screen and (max-width: 900px) {
+    width: 100%;
+  }
 `;
 
 const InfoContainer = styled.div`
   flex: 1.4;
   padding: 50px 100px 50px 50px;
   color: white;
+
+  @media only screen and (max-width: 900px) {
+    flex: 1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    text-align: center;
+  }
 `;
 
 const Title = styled.h1`
@@ -72,6 +102,7 @@ const Description = styled.p`
 `;
 const Button = styled.button`
   color: white;
+  max-width: 250px;
   padding: 10px 30px;
   font-size: 20px;
   background: transparent;

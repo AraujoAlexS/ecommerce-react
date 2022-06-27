@@ -19,6 +19,12 @@ const Section = styled.div`
   display: flex;
   align-items: center;
 
+  &:nth-child(1) {
+    @media only screen and (max-width: 690px) {
+      display: none;
+    }
+  }
+
   &:nth-child(2) {
     justify-content: center;
   }
@@ -64,6 +70,10 @@ const Logo = styled.h1`
   color: ${colors.darkGray};
   font-weight: 600;
   text-transform: uppercase;
+
+  @media only screen and (max-width: 420px) {
+    font-size: 20px;
+  }
 `;
 
 const MenuItem = styled.div`
@@ -75,6 +85,11 @@ const MenuItem = styled.div`
 
   &:hover {
     color: black;
+  }
+
+  @media only screen and (max-width: 480px) {
+    font-size: 12px;
+    margin-left: 5px;
   }
 `;
 

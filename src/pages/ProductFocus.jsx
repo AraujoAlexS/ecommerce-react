@@ -14,7 +14,7 @@ const Wrapper = styled.div`
 `;
 const Image = styled.img`
   flex: 1;
-  min-width: 380px;
+  min-width: 280px;
   width: 100%;
   height: 60vh;
   margin-bottom: 20px;
@@ -23,6 +23,10 @@ const Image = styled.img`
 const Info = styled.div`
   flex: 1;
   padding: 0px 50px;
+
+  @media only screen and (max-width: 470px) {
+    padding: 0;
+  }
 `;
 const Title = styled.h1`
   font-weight: 200;
@@ -80,6 +84,12 @@ const Size = styled.div`
   &:hover {
     color: white;
     background: ${colors.secondary};
+  }
+
+  @media only screen and (max-width: 470px) {
+    width: 25px;
+    height: 25px;
+    font-size: 12px;
   }
 `;
 

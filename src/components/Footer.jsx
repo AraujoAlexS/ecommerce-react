@@ -20,14 +20,14 @@ const Container = styled.div`
 `;
 const Section = styled.div`
   flex: 1;
-  min-width: 200px;
+  min-width: 280px;
   display: flex;
   flex-direction: column;
   padding: 100px 20px 20px;
 `;
 
 const Description = styled.p`
-  margin: 20px opx;
+  margin: 20px 0px;
 `;
 const SocialContainer = styled.div`
   display: flex;
