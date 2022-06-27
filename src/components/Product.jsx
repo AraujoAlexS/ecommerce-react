@@ -16,7 +16,6 @@ const Info = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: ${colors.secondary};
   opacity: 0;
   z-index: 1;
   transition: all 0.3s ease-in-out;
@@ -64,7 +63,6 @@ const Icon = styled.div`
 `;
 
 const Product = ({ item }) => {
-  console.log(item);
   return (
     <Container>
       <Image src={item.imgUrl} />

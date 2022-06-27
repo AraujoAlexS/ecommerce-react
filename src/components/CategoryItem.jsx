@@ -7,14 +7,15 @@ const Flip = styled.div`
   height: 100%;
   transform-style: preserve-3d;
   transition: all 1s ease-in-out;
-  perspective: 1000px;
 `;
 
 const Container = styled.div`
   flex: 1;
   margin: 3px;
+  min-width: 380px;
   height: 60vh;
   position: relative;
+  perspective: 2500px;
 
   &:hover ${Flip} {
     transform: rotateY(180deg);
