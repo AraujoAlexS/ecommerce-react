@@ -4,7 +4,8 @@ import colors from "../colors";
 import Banner from "../components/Banner";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import { products } from "../data/products";
+import useFetch from "../hooks/useFetch";
+import { useParams } from "react-router-dom";
 
 const Container = styled.div``;
 const Wrapper = styled.div`
@@ -111,26 +112,33 @@ const Button = styled.div`
 `;
 
 const ProductFocus = () => {
+  const { productId } = useParams();
+
+  const { data: products, error, loading } = useFetch(`products/${productId}`);
+
+  if (loading || !products) return <h1>Carregando ...</h1>;
+  if (error) console.log("error:", error);
+
   return (
     <Container>
       <Navbar />
       <Banner />
       <Wrapper>
-        <Image src={products[0].imgUrl} />
+        <Image src={products.imgUrl} />
         <Info>
-          <Title>{products[0].title}</Title>
-          <Description>{products[0].description}</Description>
-          <Price>{products[0].price}</Price>
+          <Title>{products.title}</Title>
+          <Description>{products.description}</Description>
+          <Price>{products.price}</Price>
           <Colors>
             Cores:
-            {products[0].cores.map((item) => (
-              <Cor color={item} />
+            {products.colors.map((item) => (
+              <Cor color={item} key="item" />
             ))}
           </Colors>
           <Sizes>
             Tamanhos:
-            {products[0].tamanhos.map((item) => (
-              <Size>{item}</Size>
+            {products.sizes.map((item) => (
+              <Size key="item">{item}</Size>
             ))}
           </Sizes>
           <Button>Adicionar ao carrinho</Button>

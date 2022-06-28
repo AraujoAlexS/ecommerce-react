@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import colors from "../colors";
+import { Link } from "react-router-dom";
 import {
   FavoriteBorderOutlined,
   SearchOutlined,
@@ -25,7 +26,7 @@ const Container = styled.div`
   flex: 1;
   position: relative;
   margin: 5px;
-  min-width: 380px;
+  min-width: 340px;
   height: 350px;
   display: flex;
   align-items: center;
@@ -36,6 +37,9 @@ const Container = styled.div`
   &:hover ${Info} {
     opacity: 1;
     z-index: 3;
+  }
+  a {
+    color: black;
   }
 `;
 
@@ -63,16 +67,23 @@ const Icon = styled.div`
 `;
 
 const Product = ({ item }) => {
+  const setData = (data) => {
+    let strData = JSON.stringify(data);
+    localStorage.setItem(data.id, strData);
+  };
+
   return (
     <Container>
       <Image src={item.imgUrl} />
       <Info>
-        <Icon>
+        <Icon onClick={() => setData(item)}>
           <ShoppingCartOutlined />
         </Icon>
-        <Icon>
-          <SearchOutlined />
-        </Icon>
+        <Link to={"/" + item.id}>
+          <Icon>
+            <SearchOutlined />
+          </Icon>
+        </Link>
         <Icon>
           <FavoriteBorderOutlined />
         </Icon>

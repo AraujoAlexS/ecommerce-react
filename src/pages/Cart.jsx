@@ -5,7 +5,7 @@ import Banner from "../components/Banner";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import ProductCart from "../components/ProductCart";
-import { cart } from "../data/cart";
+
 const Container = styled.div``;
 const Wrapper = styled.div`
   padding: 20px;
@@ -62,6 +62,18 @@ const Button = styled.button`
 `;
 
 const Cart = () => {
+  const getItems = () => {
+    const allItems = [];
+
+    for (var i = 0, len = localStorage.length; i < len; ++i) {
+      allItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
+    }
+
+    return allItems;
+  };
+
+  const cart = getItems();
+  console.log(cart);
   return (
     <Container>
       <Navbar />
@@ -69,7 +81,7 @@ const Cart = () => {
       <Wrapper>
         <Title>Seu carrinho</Title>
         {cart.map((item) => (
-          <ProductCart item={item} />
+          <ProductCart item={item} key={item.id} />
         ))}
         <Buttons>
           <Button>Voltar a loja</Button>

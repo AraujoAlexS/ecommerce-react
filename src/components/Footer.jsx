@@ -12,11 +12,16 @@ import {
   WhatsApp,
 } from "@material-ui/icons";
 import colors from "../colors";
+import { Link } from "react-router-dom";
 const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   background: ${colors.primary};
   color: white;
+
+  a {
+    color: white;
+  }
 `;
 const Section = styled.div`
   flex: 1;
@@ -38,7 +43,7 @@ const SocialIcon = styled.a`
   height: 40px;
   border-radius: 50%;
   background: white;
-  color: ${colors.primary};
+  color: ${colors.primary} !important;
   display: grid;
   place-items: center;
   transition: all 0.3s ease-in-out;
@@ -77,7 +82,9 @@ const Footer = () => {
   return (
     <Container>
       <Section>
-        <Title>Ecommerce</Title>
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <Title>Ecommerce</Title>
+        </Link>
         <Description>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur a
           erat nec nunc luctus ornare nec eu felis. Mauris sit amet vulputate
@@ -101,10 +108,26 @@ const Footer = () => {
       <Section>
         <Title>Links úteis</Title>
         <List>
-          <ListItem>Home</ListItem>
-          <ListItem>Carrinho</ListItem>
-          <ListItem>Login</ListItem>
-          <ListItem>Registre-se</ListItem>
+          <ListItem>
+            <Link to="/" style={{ textDecoration: "none" }}>
+              Home
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/cart" style={{ textDecoration: "none" }}>
+              Carrinho
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/login" style={{ textDecoration: "none" }}>
+              Login
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/signup" style={{ textDecoration: "none" }}>
+              Registre-se
+            </Link>
+          </ListItem>
         </List>
       </Section>
       <Section>

@@ -37,8 +37,8 @@ const Text = styled.div`
   margin-bottom: 15px;
 `;
 const Color = styled.div`
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background: ${(props) => props.color};
   margin-bottom: 15px;
@@ -70,15 +70,16 @@ const ProductCart = ({ item }) => {
       <Info>
         <Title>{item.title}</Title>
         <Text>
-          {" "}
-          Quantidade: <strong> {item.qtd} </strong>
+          Quantidade: <strong> {item.qtd ? item.qtd : 1} </strong>
         </Text>
-        <Color color={item.cor} />
+        <Color color={item.colors[0]} />
         <Text>
-          Tamanho: <strong> {item.tamanho} </strong>
+          Tamanho: <strong> {item.sizes[0]} </strong>
         </Text>
       </Info>
-      <TotalPrice>R$ {realToFloat(item.preco) * item.qtd}</TotalPrice>
+      <TotalPrice>
+        R$ {realToFloat(item.price) * (item.qtd ? item.qtd : 1)}
+      </TotalPrice>
     </Container>
   );
 };

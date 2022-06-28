@@ -12,7 +12,7 @@ const Flip = styled.div`
 const Container = styled.div`
   flex: 1;
   margin: 3px;
-  min-width: 380px;
+  min-width: 340px;
   height: 60vh;
   position: relative;
   perspective: 2500px;

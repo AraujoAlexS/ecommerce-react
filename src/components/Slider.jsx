@@ -2,7 +2,7 @@ import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
 import React, { useState } from "react";
 import styled from "styled-components";
 import colors from "../colors";
-import { highlightedItems } from "../data/highlightedItems";
+import useFetch from "../hooks/useFetch";
 
 const Container = styled.div`
   position: relative;
@@ -125,6 +125,15 @@ const Slider = () => {
       setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
     }
   };
+
+  const {
+    data: highlightedItems,
+    error,
+    loading,
+  } = useFetch("highlightedItems");
+
+  if (loading || !highlightedItems) return <h1>Carregando ...</h1>;
+  if (error) console.log("error:", error);
   return (
     <Container>
       <Arrow direction="left" onClick={() => handleClick("left")}>

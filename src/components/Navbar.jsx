@@ -1,8 +1,9 @@
 import { Badge } from "@material-ui/core";
 import { Search, ShoppingCartOutlined } from "@material-ui/icons";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import colors from "../colors";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   height: 60px;
@@ -94,6 +95,13 @@ const MenuItem = styled.div`
 `;
 
 const Navbar = () => {
+  const aux = localStorage.length;
+  const [cartQtd, setCartQtd] = useState(aux);
+
+  useEffect(() => {
+    setCartQtd(localStorage.length);
+  }, [aux]);
+
   return (
     <Container>
       <Wrapper>
@@ -105,16 +113,24 @@ const Navbar = () => {
           </SearchContainer>
         </Section>
         <Section>
-          <Logo>Ecommerce.</Logo>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <Logo>Ecommerce.</Logo>
+          </Link>
         </Section>
         <Section>
-          <MenuItem>Registre-se</MenuItem>
-          <MenuItem>Entrar</MenuItem>
-          <MenuItem>
-            <Badge badgeContent={1} color="primary">
-              <ShoppingCartOutlined />
-            </Badge>
-          </MenuItem>
+          <Link to="/signup" style={{ textDecoration: "none" }}>
+            <MenuItem>Registre-se</MenuItem>
+          </Link>
+          <Link to="/login" style={{ textDecoration: "none" }}>
+            <MenuItem>Entrar</MenuItem>
+          </Link>
+          <Link to="/cart" style={{ textDecoration: "none" }}>
+            <MenuItem>
+              <Badge badgeContent={cartQtd} color="primary">
+                <ShoppingCartOutlined />
+              </Badge>
+            </MenuItem>
+          </Link>
         </Section>
       </Wrapper>
     </Container>
