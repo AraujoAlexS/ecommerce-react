@@ -5,7 +5,7 @@ import Banner from "../components/Banner";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import ProductCart from "../components/ProductCart";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const Container = styled.div``;
 const Wrapper = styled.div`
   padding: 20px;
@@ -62,6 +62,7 @@ const Button = styled.button`
 `;
 
 const Cart = () => {
+  let navigate = useNavigate();
   const getItems = () => {
     const allItems = [];
 
@@ -72,6 +73,18 @@ const Cart = () => {
     }
 
     return allItems;
+  };
+
+  const finishPurchase = () => {
+    for (var i = 0; i < localStorage.length; ++i) {
+      if (/\d+/.test(localStorage.getItem(localStorage.key(i)))) {
+        console.log(i);
+        localStorage.removeItem(localStorage.key(i));
+      }
+    }
+
+    navigate("/");
+    window.alert("Obrigado pela compra");
   };
 
   const cart = getItems();
@@ -88,7 +101,7 @@ const Cart = () => {
           <Link to="/">
             <Button>Voltar a loja</Button>
           </Link>
-          <Button>Finalizar compra</Button>
+          <Button onClick={finishPurchase}>Finalizar compra</Button>
         </Buttons>
       </Wrapper>
       <Footer />
