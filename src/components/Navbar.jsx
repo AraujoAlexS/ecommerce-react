@@ -3,7 +3,7 @@ import { Search, ShoppingCartOutlined } from "@material-ui/icons";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import colors from "../colors";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   height: 60px;
@@ -35,38 +35,6 @@ const Section = styled.div`
   }
 `;
 
-const Language = styled.span`
-  color: ${colors.gray};
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-
-  &:hover {
-    color: black;
-  }
-`;
-
-const SearchContainer = styled.div`
-  border: 0.5px solid lightgray;
-  display: flex;
-  align-items: center;
-  margin-left: 25px;
-  padding: 5px;
-  transition: all 0.3s ease-in-out;
-
-  &:hover {
-    border: 1px solid ${colors.gray};
-  }
-`;
-
-const Input = styled.input`
-  border: none;
-
-  &:focus {
-    outline: none;
-  }
-`;
-
 const Logo = styled.h1`
   color: ${colors.darkGray};
   font-weight: 600;
@@ -95,22 +63,26 @@ const MenuItem = styled.div`
 `;
 
 const Navbar = () => {
+  let navigate = useNavigate();
+
   const aux = localStorage.length;
   const [cartQtd, setCartQtd] = useState(aux);
+  const user = localStorage.getItem("token");
 
   useEffect(() => {
-    setCartQtd(localStorage.length);
+    setCartQtd(localStorage.length - 1);
   }, [aux]);
+
+  const leaveSession = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
 
   return (
     <Container>
       <Wrapper>
         <Section>
-          <Language>PT-br</Language>
-          <SearchContainer>
-            <Input />
-            <Search style={{ fontSize: 18, color: "#777" }} />
-          </SearchContainer>
+          <MenuItem>Bem vindo {user}</MenuItem>
         </Section>
         <Section>
           <Link to="/" style={{ textDecoration: "none" }}>
@@ -118,12 +90,7 @@ const Navbar = () => {
           </Link>
         </Section>
         <Section>
-          <Link to="/signup" style={{ textDecoration: "none" }}>
-            <MenuItem>Registre-se</MenuItem>
-          </Link>
-          <Link to="/login" style={{ textDecoration: "none" }}>
-            <MenuItem>Entrar</MenuItem>
-          </Link>
+          <MenuItem onClick={leaveSession}>Sair</MenuItem>
           <Link to="/cart" style={{ textDecoration: "none" }}>
             <MenuItem>
               <Badge badgeContent={cartQtd} color="primary">

@@ -100,21 +100,6 @@ const Description = styled.p`
   letter-spacing: 3px;
   text-transform: uppercase;
 `;
-const Button = styled.button`
-  color: white;
-  max-width: 250px;
-  padding: 10px 30px;
-  font-size: 20px;
-  background: transparent;
-  border: 2px solid ${colors.secondary};
-  transition: all 0.3s ease-in-out;
-
-  &:hover {
-    background: white;
-    color: ${colors.primary};
-    border: 2px solid ${colors.primary};
-  }
-`;
 
 const Slider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
@@ -148,7 +133,6 @@ const Slider = () => {
             <InfoContainer>
               <Title>{item.title}</Title>
               <Description>{item.description}</Description>
-              <Button>SAIBA MAIS</Button>
             </InfoContainer>
           </Slide>
         ))}

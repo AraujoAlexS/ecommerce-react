@@ -2,11 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import colors from "../colors";
 import { Link } from "react-router-dom";
-import {
-  FavoriteBorderOutlined,
-  SearchOutlined,
-  ShoppingCartOutlined,
-} from "@material-ui/icons";
+import { SearchOutlined } from "@material-ui/icons";
 
 const Info = styled.div`
   position: absolute;
@@ -67,26 +63,15 @@ const Icon = styled.div`
 `;
 
 const Product = ({ item }) => {
-  const setData = (data) => {
-    let strData = JSON.stringify(data);
-    localStorage.setItem(data.id, strData);
-  };
-
   return (
     <Container>
       <Image src={item.imgUrl} />
       <Info>
-        <Icon onClick={() => setData(item)}>
-          <ShoppingCartOutlined />
-        </Icon>
         <Link to={"/" + item.id}>
           <Icon>
             <SearchOutlined />
           </Icon>
         </Link>
-        <Icon>
-          <FavoriteBorderOutlined />
-        </Icon>
       </Info>
     </Container>
   );

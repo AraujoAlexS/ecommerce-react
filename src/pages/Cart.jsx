@@ -5,7 +5,7 @@ import Banner from "../components/Banner";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import ProductCart from "../components/ProductCart";
-
+import { Link } from "react-router-dom";
 const Container = styled.div``;
 const Wrapper = styled.div`
   padding: 20px;
@@ -65,15 +65,16 @@ const Cart = () => {
   const getItems = () => {
     const allItems = [];
 
-    for (var i = 0, len = localStorage.length; i < len; ++i) {
-      allItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
+    for (var i = 0; i < localStorage.length; ++i) {
+      if (/\d+/.test(localStorage.getItem(localStorage.key(i)))) {
+        allItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
+      }
     }
 
     return allItems;
   };
 
   const cart = getItems();
-  console.log(cart);
   return (
     <Container>
       <Navbar />
@@ -84,7 +85,9 @@ const Cart = () => {
           <ProductCart item={item} key={item.id} />
         ))}
         <Buttons>
-          <Button>Voltar a loja</Button>
+          <Link to="/">
+            <Button>Voltar a loja</Button>
+          </Link>
           <Button>Finalizar compra</Button>
         </Buttons>
       </Wrapper>

@@ -72,9 +72,9 @@ const ProductCart = ({ item }) => {
         <Text>
           Quantidade: <strong> {item.qtd ? item.qtd : 1} </strong>
         </Text>
-        <Color color={item.colors[0]} />
+        <Color color={item.color} />
         <Text>
-          Tamanho: <strong> {item.sizes[0]} </strong>
+          Tamanho: <strong> {item.size} </strong>
         </Text>
       </Info>
       <TotalPrice>
